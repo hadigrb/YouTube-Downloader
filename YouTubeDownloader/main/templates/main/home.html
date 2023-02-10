@@ -1,0 +1,27 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>YT Saver</title>
+</head>
+<body>
+    <center>    
+        <h2>YouTube Downloader</h2>
+        <b><p style="color: coral;">Enter the url of a video to download it!</p></b>
+        <form method="post" action="">
+            {% csrf_token %}
+            <input type="text" name="given_url" value="{{url}}" placeholder="Enter url..">
+            <button type="submit" name="fetch-vid" value="fetch-vid">do it</button>
+    
+            <br>
+                <h3>{{video_title}}</h3>
+                <img src="{{video_thumbnail}}"/>
+            <br>
+    
+            {% for x in stream %}
+                {{x.resolution}} <button type="submit" name="download-vid" value="{{forloop.counter}}">Download</button>|
+            {% endfor %}
+            <br><br>
+        </form>
+    </center>
+</body>
